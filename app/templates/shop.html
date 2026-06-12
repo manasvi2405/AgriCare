@@ -1,0 +1,54 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block "content"%}
+<section class="bannerimg">
+    <div class="py-5 text-center text-white">
+        <p class="mt-3"><span class="border p-3 rounded "><a href="{%url 'home'%}" class="text-white">Home </a><img src="{%static 'images/leaf.png'%}" alt="" height="18" width="18"> Shop </span></p>
+        <h1 class="mt-5 mb-3">{{category.name}}</h1>
+    </div>
+</section>
+<main class="container py-5">
+<div class="row g-3">
+{% for product in products %}
+  <div class="col-6 col-md-4 col-lg-3">
+    <a href="{%url 'product' product.id%}" class="text-dark">
+    <div class="card mb-3 rounded product-card">
+  <img src="/media/{{product.product_image}}" class="card-img-top w-75 m-auto p-3 d-none d-md-block" alt="..." height="250" >
+  <img src="/media/{{product.product_image}}" class="card-img-top w-75 m-auto p-3 d-md-none" alt="..." height="350" >
+  
+  <div class="card-body">
+    <p class="card-title fw-bold">{{product.name}}</p>
+    <p class="card-text">{{product.brand.name}}</p>
+    <p class="card-text fs-5 mb-0"> <i class="bi bi-currency-rupee"></i> {{product.selling_price}}
+    <del class="text-secondary"><i class="bi bi-currency-rupee"></i> {{product.mrp}}</del>
+    </p>
+    <p class="text-theme"> Save ₹{{product.discount}}</p>
+  </div>
+</div></a>
+  </div>
+{% empty %}
+<div class="alert alert-light">
+  <p>No Article Found!</p>
+</div>
+{% endfor %}
+</div>
+
+<nav class='mt-5'>
+<ul class="pagination w-25 m-auto">
+{% if products.has_previous %}
+  <li class="page-item"><a class="page-link text-dark" href='/shop/?page=1'>&laquo</a></li>
+  <li class="page-item"><a class="page-link text-dark" href='/shop/?page={{products.previous_page_number}}'>Prev</a></li>
+{% endif %}
+<li class="page-item">
+    <span class="page-link text-dark"> {{ products.number }} of {{ products.paginator.num_pages }}.</span>
+</li>
+{% if products.has_next %}
+  <li class="page-item"><a class="page-link text-dark" href='/shop/?page={{products.next_page_number}}'>Next</a></li>
+  <li class="page-item"><a class="page-link text-dark" href="?page={{products.paginator.num_pages }}"> &raquo;</a></li>
+{% endif %}
+</nav>
+
+
+</main>
+
+{% endblock %}

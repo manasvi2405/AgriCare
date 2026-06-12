@@ -1,0 +1,30 @@
+{% extends 'userbase.html' %}
+{% block content %}
+{% load static %}
+<div class="row justify-content-center">
+    <div class="col-md-6 py-5">
+        {% include 'message.html' %}
+<h5 class=''>Edit Account Settings </h5> <hr>
+<form method="post">
+{% csrf_token %}
+{{ form.as_p }}
+<button type="submit" class='btn btn-dark bg-theme w-100 border-none w-100'>Update Account</button>
+</form>
+
+</div>
+</div>
+{% if form.errors %}
+<div class="alert alert-danger mt-4">
+{% for key, value in form.errors.items %}
+{{ value.as_text }}
+{% endfor %}
+</div>
+{% endif %}
+<script>
+    document.querySelector('#id_password_helptext').style.display='none';
+    document.querySelector('#id_password').style.display='none';
+    document.getElementsByTagName('label')[4].style.display='none';
+</script>
+
+{% endblock %}
+

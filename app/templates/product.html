@@ -1,0 +1,132 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block "content"%}
+<section class="bannerimg">
+    <div class="py-5 text-center text-white">
+        <p class="mt-4"><span class="border p-3 rounded "><a href="{%url 'home'%}" class="text-white">Home </a><img src="{%static 'images/leaf.png'%}" alt="" height="18" width="18"> Product </span></p>
+        <h1 class="mt-5 mb-3">{{product.name}}</h1>
+    </div>
+    </section>
+<section class="container py-5">
+    <div class="row gap-3">
+        <div class="col-lg text-center">
+            <img src="/media/{{product.product_image}}" class="" height="450px" alt="">
+        </div>
+        <div class="col-lg">
+            <h1 class="fw-bold">{{product.name}}</h1>
+    <p class="fs-3"><a class="text-theme-dark" href="{%url 'shopbybrand' product.brand.id%}"><u>{{product.brand.name}}</u></a></p>
+    <p class="card-text fs-3 mb-0"> <i class="bi bi-currency-rupee"></i> {{product.selling_price}}
+    <del class="text-secondary"><i class="bi bi-currency-rupee"></i> {{product.mrp}}</del>
+    </p>
+    <p class="text-theme fs-3 m-0"><img src="{% static 'images/sale.png'%}" alt="" height="30" width="30"> Save ₹{{product.discount}}</p>
+    <p class="m-0">Inclusive of all Taxes</p>
+    <p class="fs-4">Quantity: <span class="fw-bold">{{product.weight_volume}} {{product.unit}}</span></p>
+      {% if product.category.parent.name == "Tools" %}
+      <span></span>
+      {% else %}
+    <p>Expire on {{product.expiry_date}}</p> 
+    {% endif %} 
+      <p>
+        {% if product.in_stock %}
+        <span class="text-success fs-5 border border-dark p-2">In Stock</span>
+        <div class="mt-4">
+        <form action="{% url 'add_to_cart' product.id %}" method="post" style="display:inline;">
+          {% csrf_token %}
+      <button type="submit" class="btn btn-dark bg-theme-dark p-2 w-25 text-white">Add to Cart</button>
+    </form>
+   <a href="{% url 'add_to_wishlist' product.id %}" class="btn btn-outline-danger p-2 w-25 ms-2">
+    ❤️ Add to Wishlist
+                       </a>
+    </div>
+        {% else %}
+        <span class="text-danger fs-5 border border-dark p-2">Out Of Stock</span>
+        {% endif %}
+      </p>
+    </div>
+    </div>
+</section>
+   <section class="container py-5">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Overview</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Description</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Contact</button>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active py-5" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+    <table class="table w-25">
+            <tr><th>Name</th><td>{{product.name}}</td> </tr>
+            <tr><th>Brand</th><td>{{product.brand.name}}</td> </tr>
+            <tr><th>Category</th><td>{{product.category}}</td> </tr>
+            <tr><th>Toxicity</th><td>{{product.toxicity_levels}}</td> </tr>
+
+    </table>
+  </div>
+  <div class="tab-pane fade my-5" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">{{product.description | safe}}</div>
+  <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">...</div>
+  <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div>
+</div>
+</section>
+
+<div class="bg-theme-light">
+<section class="container py-5">
+  <h1 class="py-3 text-center">More from {{product.brand.name}}</h1>
+  <div class="row g-3">
+{% for bproduct in brands_products %}
+  <div class="col-6 col-md-4 col-lg-3">
+    <a href="{%url 'product' product.id%}" class="text-dark">
+    <div class="card mb-3 rounded product-card">
+      <img src="/media/{{bproduct.product_image}}" class="card-img-top w-75 m-auto p-3 d-none d-md-block" alt="..." height="250" >
+  <img src="/media/{{bproduct.product_image}}" class="card-img-top w-75 m-auto p-3 d-md-none" alt="..." height="350" >
+  <div class="card-body">
+    <p class="card-title fw-bold">{{bproduct.name}}</p>
+    <p class="card-text">{{bproduct.brand.name}}</p>
+    <p class="card-text fs-5 mb-0"> <i class="bi bi-currency-rupee"></i> {{bproduct.selling_price}}
+    <del class="text-secondary"><i class="bi bi-currency-rupee"></i> {{bproduct.mrp}}</del>
+    </p>
+    <p class="text-theme"> Save {{product.save}}</p>
+  </div>
+</div></a>
+  </div>
+{% empty %}
+<div class="alert alert-light">
+  <p>No Product Found!</p>
+</div>
+{% endfor %}
+</div>
+</section>
+
+<section class="container pb-5">
+  <h1 class="pb-3 text-center">More from {{product.category.name}}</h1>
+  <div class="row g-3">
+{% for cproduct in category_products %}
+  <div class="col-6 col-md-4 col-lg-3">
+    <a href="{%url 'product' cproduct.id%}" class="text-dark">
+    <div class="card mb-3 rounded product-card">
+  <img src="/media/{{cproduct.product_image}}" class="card-img-top w-75 m-auto p-3 d-none d-md-block" alt="..." height="250" >
+  <img src="/media/{{cproduct.product_image}}" class="card-img-top w-75 m-auto p-3 d-md-none" alt="..." height="350" >
+  <div class="card-body">
+    <p class="card-title fw-bold">{{cproduct.name}}</p>
+    <p class="card-text">{{cproduct.brand.name}}</p>
+    <p class="card-text fs-5 mb-0"> <i class="bi bi-currency-rupee"></i> {{cproduct.selling_price}}
+    <del class="text-secondary"><i class="bi bi-currency-rupee"></i> {c{product.mrp}}</del>
+    </p>
+    <p class="text-theme"> Save {{cproduct.save}}</p>
+  </div>
+</div></a>
+  </div>
+{% empty %}
+<div class="alert alert-light">
+  <p>No Product Found!</p>
+</div>
+{% endfor %}
+</div>
+</section>
+</div>
+
+{% endblock %}

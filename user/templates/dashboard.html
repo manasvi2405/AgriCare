@@ -1,0 +1,31 @@
+{% extends 'userbase.html' %}
+{% block content %}
+{% load static %}
+<h1 class='fg p-2 pt-4'>My Profile</h1>
+<hr>
+<p class='text-muted display-6'> Hello, {{ user.username|default:'Guest' }}! </p>
+<h5 class=''>Personal Details </h5> <hr>
+<form method="post">
+{% csrf_token %}
+<div class="row">
+<div class="col-6">
+<label for="id_first_name">First name:</label>
+<input type="text" name="first_name" class="form-control" maxlength="255" required="" id="id_first_name" fdprocessedid="itw3rt" value="{{user.first_name}}"> 
+</div>
+<div class="col-6">
+<label for="id_last_name">Last name:</label>
+<input type="text" name="last_name" value="{{user.last_name}}" class="form-control" maxlength="255" required="" id="id_last_name" fdprocessedid="zqx4lh">
+</div>
+</div>
+<div class="my-3">
+<label for="id_username">Username:</label>
+<input type="text" name="username" value="{{user.username}}" class="form-control" maxlength="255" required="" id="id_username" fdprocessedid="c4u7jd">
+</div>
+<label for="id_email">Email:</label>
+<input type="email" name="email" value="{{user.email}}" class="form-control" maxlength="320" required="" id="id_email" fdprocessedid="ymxmg">
+<div class="text-center my-3">
+<button type="submit" class='btn btn-dark bg-theme w-25 border-none rounded-pill'>Update Account</button>
+</div>
+</form>
+<hr>
+{% endblock %}

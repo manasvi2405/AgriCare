@@ -1,0 +1,84 @@
+{% extends 'userbase.html' %}
+{% block content %}
+{% load static %}
+
+<div class="container py-5 w-75">
+
+
+    {% for order in orders %}
+        <div class="order-card mb-4 border p-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <h4>Order #{{ order.id }}</h4>
+                <span class="badge {% if order.is_paid %}bg-success{% else %}bg-warning{% endif %} ">
+                    {% if order.is_paid %}Paid{% else %}Unpaid{% endif %}
+                </span>
+            </div>
+           
+            <p class="my-0">Date: {{ order.created_at|date:"d M Y" }}</p>
+            <p class="my-0">Status: **{{ order.get_status_display }}**</p>
+            <p>Shipping to: {{ order.shipping_address.full_name }}, {{ order.shipping_address.city }}</p>
+
+
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Product</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in order.items.all %}
+                        <tr>
+                            <td><img src="/media/{{item.product.product_image}}" class="" height="50" width="50" alt=""></td>
+                            <td class="w-75">{{ item.product.name }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>₹{{ item.price }}</td> </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col">
+            {% if order.status == "Pending" or order.status == "Packed" %}
+<form action="{% url 'cancel_order' order.id %}" method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger rounded-pill"
+        onclick="return confirm('Are you sure you want to cancel this order?')">
+        Cancel Order
+    </button>
+</form>
+{% else %}
+<span class="text-secondary">Cancellation Not Allowed</span>
+{% endif %}
+           </div>
+            <div class="col text-end">
+                <p class="fw-bold">Total Amount: ₹{{ order.total_amount }}</p>
+            </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>You haven't placed any orders yet. <a href="{% url 'home' %}">Start Shopping!</a></p>
+    {% endfor %}
+</div>
+
+
+<nav class='mt-5'>
+<ul class="pagination w-25 m-auto">
+{% if orders.has_previous %}
+  <li class="page-item"><a class="page-link text-dark" href='/user/track/?page=1'>&laquo</a></li>
+  <li class="page-item"><a class="page-link text-dark" href='/user/track/?page={{orders.previous_page_number}}'>Prev</a></li>
+{% endif %}
+<li class="page-item">
+    <span class="page-link text-dark"> {{ orders.number }} of {{ orders.paginator.num_pages }}.</span>
+</li>
+{% if orders.has_next %}
+  <li class="page-item"><a class="page-link text-dark" href='/user/track/?page={{orders.next_page_number}}'>Next</a></li>
+  <li class="page-item"><a class="page-link text-dark" href="?page={{orders.paginator.num_pages }}"> &raquo;</a></li>
+{% endif %}
+</nav>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,6 @@
+<form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <div class="">
+        <button type="submit" class='text-light bg-theme-dark p-2 rounded'>Log Out</button>
+    </div>
+</form>

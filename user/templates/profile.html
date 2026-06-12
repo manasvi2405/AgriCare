@@ -1,0 +1,22 @@
+{% extends 'userbase.html' %}
+{% block content %}
+{% load static %}
+<div class="row justify-content-center">
+<div class="col-md-6 py-5">
+<h5 class=''>Edit Profile Info </h5> <hr>
+<form method="post">
+{% csrf_token %}
+{{ form.as_p }}
+<button type="submit" class='btn btn-dark bg-theme w-100 border-none w-100'>Update Profile</button>
+</form>
+
+</div>
+</div>
+{% if form.errors %}
+<div class="alert alert-danger mt-4">
+{% for key, value in form.errors.items %}
+{{ value.as_text }}
+{% endfor %}
+</div>
+{% endif %}
+{% endblock %}

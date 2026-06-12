@@ -1,0 +1,83 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block "content"%}
+<style>
+     body {
+  background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.7)),
+              url('/static/images/croppp.jpg');
+  background-size: cover;
+}
+</style>
+<section class="bannerimg">
+    <div class="py-5 text-center text-white">
+        <p class="mt-4"><span class="border p-3 rounded "><a href="{%url 'home'%}" class="text-white">Home </a><img src="{%static 'images/leaf.png'%}" alt="" height="18" width="18"> Crop Recommendation</span></p>
+        <h1 class="mt-5 mb-3">Know & Grow</h1>
+    </div>
+</section>
+<section class="container py-5">
+    <h1 class="text-center fw-bold mb-4">Find Out the most suitable crop to Grow in Your Farm</h1>
+    {% if status == "success" %}
+                    <div class="alert bg-theme-light fs-4 w-50 m-auto m-0 p-0 p-2 text-center"> Recommended Crop : <strong class="text-uppercase">{{res}}</strong> <br> 
+                        
+                    </div>
+                    {% endif %}
+                    {% if status == "error"%}
+                    <div class="alert alert-danger">{{res}}</div>
+                    {% endif %}
+    <div class="row my-5">
+                <div class="col-md-5">
+                    <img src="{% static 'images/croppp.jpg' %}" alt="" height="430" width="510" class="w-100 crop-img d-none d-md-block">
+                    </div>      
+        <div class="col-md-7">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="input-group my-3">
+                        <span class="input-group-text bg-theme-light w-25">
+                <i class="bi bi-droplet me-1"></i><label class="fw-bold">Nitrogen</label></span>
+                <input type="number" name="N" class="form-control" min="0" max="150" placeholder="Ratio of Nitrogen Content in soil (0-150):">
+                   </div>
+
+                   <div class="input-group my-3">
+                    <span class="input-group-text bg-theme-light w-25">
+                <i class="bi bi-brightness-high me-1"></i><label class="fw-bold">Phosphorous</label></span>
+                <input type="number" name="P" class="form-control" min="0" max="150" placeholder="Ratio of Phosphorous Content in soil (0-150):">
+                  </div>
+
+                  <div class="input-group my-3">
+                    <span class="input-group-text bg-theme-light w-25">
+                <i class="bi bi-tree me-1"></i><label class="fw-bold">Postassium</label></span>
+                <input type="number" name="K" class="form-control" min="0" max="220" placeholder="Ratio of Potassium Content in soil (0-220):">
+                 </div>
+
+                 <div class="input-group my-3"> 
+                    <span class="input-group-text bg-theme-light w-25">
+                <i class="bi bi-speedometer2 me-1"></i><label class="fw-bold">ph</label></span>
+                <input type="number" name="ph" class="form-control" min="0" max="12" placeholder="ph value of the soil (0-12):">
+                 </div>
+
+                 <div class="input-group my-3">
+                    <span class="input-group-text bg-theme-light w-25">
+                <i class="bi bi-thermometer-half"></i><label class="fw-bold">Temperature</label></span>
+                <input type="number" name="temp" class="form-control" min="8" max="50" placeholder="Temperature in degree Celsius (8-50):">
+                </div>
+
+                <div class="input-group my-3">
+                    <span class="input-group-text bg-theme-light w-25">
+                <i class="bi bi-moisture me-1"></i><label class="fw-bold">Humidity</label></span>
+                <input type="number" name="humidity" class="form-control" min="10" max="110" placeholder="Relative humidity (10-110):">
+                 </div>
+
+                 <div class="input-group my-3">
+                    <span class="input-group-text bg-theme-light w-25">
+                <i class="bi bi-cloud-rain me-1"></i><label class="fw-bold">Rainfall</label></span>
+                <input type="number" name="rainfall" class="form-control" min="15" max="350" placeholder="Rainfall in mm (15-350):">
+                </div>
+
+                <div class="text-center">
+            <button type="submit" class="btn btn-dark bg-theme-dark mt-3 w-50 px-5 py-2 fw-bold rounded-pill">Predict the Crop<span class="rounded-circle bg-theme p-2 ms-2"><i class="bi bi-arrow-right"></i></span></button>
+            </div>
+            </form>
+        </div>
+    </div>
+</section>
+{%endblock%}

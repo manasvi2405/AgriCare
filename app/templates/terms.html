@@ -1,0 +1,126 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block "content"%}
+<style>
+    h2{
+        color: green;
+    }
+</style>
+<section class="bannerimg">
+    <div class="py-5 text-center text-white">
+        <p class="mt-3"><span class="border rounded p-3"><a href="{% url 'home'%}" class="text-white">Home </a>
+            <img src="{%static 'images/leaf.png'%}" alt="" height="18" width="18">
+  {% if user.is_authenticated %}
+  <a href="{% url 'dashboard'%}" class="text-white">Dashboard </a><img src="{%static 'images/leaf.png'%}" alt="" height="18" width="18">
+  {% else %}
+  <a href="{% url 'login'%}" class="text-white">Dashboard </a><img src="{%static 'images/leaf.png'%}" alt="" height="18" width="18">
+  {% endif %}
+</li>
+            Terms of Service</span></p>
+    </div>
+</section>
+
+<section class="container py-5 terms-container">
+
+<h2>AgriCare Terms & Conditions</h2>
+<p>Welcome to AgriCare. By using our website and services, you agree to the following terms and conditions.</p>
+
+<hr>
+
+<h2>1. About AgriCare</h2>
+<p>
+AgriCare is an online agricultural platform that provides farmers with quality seeds, fertilizers, 
+and crop-related products. The platform also offers smart farming tools such as crop recommendations, 
+plant disease detection, and agricultural guidance to help farmers improve productivity.
+</p>
+
+<h2>2. Product Information</h2>
+<p>
+AgriCare strives to provide accurate product descriptions and images. However, the final appearance,
+packaging, or brand of products such as seeds or fertilizers may vary depending on supplier availability.
+Product performance may also vary depending on soil conditions, weather, and farming practices.
+</p>
+
+<h2>3. Agricultural Advisory Disclaimer</h2>
+<p>
+The crop recommendation and disease detection features available on AgriCare are designed to assist farmers
+with general agricultural guidance. These recommendations are based on available data and technology and
+should not replace professional agricultural advice.
+</p>
+<p>
+Users are advised to consult agricultural experts or local authorities before making major farming decisions.
+AgriCare will not be responsible for crop loss or farming outcomes based on these recommendations.
+</p>
+
+<h2>4. User Responsibilities</h2>
+<ul>
+<li>Users must provide accurate information when placing orders.</li>
+<li>Users are responsible for verifying the suitability of seeds, fertilizers, or crop treatments.</li>
+<li>Any misuse of the platform or uploading harmful content is strictly prohibited.</li>
+</ul>
+
+<h2>5. Intellectual Property</h2>
+<p>
+All content on the AgriCare website including logos, text, graphics, software, and images
+are the intellectual property of AgriCare unless otherwise stated. Users may not copy,
+reproduce, or distribute website content without permission.
+</p>
+
+<h2>6. Pricing Policy</h2>
+<p>
+All product prices displayed on AgriCare are in Indian Rupees (INR). Prices may change
+without prior notice depending on supplier pricing or market conditions.
+</p>
+
+<h2>7. Orders and Availability</h2>
+<p>
+Orders placed on the website are subject to product availability. In case a product is unavailable,
+AgriCare may cancel or modify the order and notify the user via email or phone.
+</p>
+
+<h2>8. Shipping and Delivery</h2>
+<p>
+AgriCare will make every effort to deliver products within the estimated delivery time.
+However, delays may occur due to weather conditions, courier issues, or unforeseen circumstances.
+Once the order is shipped, the risk of loss passes to the buyer.
+</p>
+
+<h2>9. Limitation of Liability</h2>
+<p>
+AgriCare shall not be liable for any direct or indirect damages including crop loss,
+financial loss, or other damages resulting from the use of products or information provided
+on the website.
+</p>
+
+<h2>10. Third Party Links</h2>
+<p>
+The website may contain links to third-party websites for additional agricultural information.
+AgriCare does not control or take responsibility for the content of those external sites.
+</p>
+
+<h2>11. Termination of Services</h2>
+<p>
+AgriCare reserves the right to suspend or terminate access to the website if a user violates
+these terms or misuses the platform.
+</p>
+
+<h2>12. Governing Law</h2>
+<p>
+These terms are governed by the laws of India. Any disputes arising from the use of this
+website will be subject to the jurisdiction of Indian courts.
+</p>
+
+<h2>13. Contact & Support</h2>
+<p>
+If you have any questions, complaints, or need assistance, please contact the AgriCare support team.
+</p>
+
+<ul>
+<li>Email: support@agricare.com</li>
+<li>Phone: +91-9876034277</li>
+<li>Support Hours: Monday – Saturday (9 AM – 6 PM)</li>
+</ul>
+
+</section>
+
+{% endblock %}

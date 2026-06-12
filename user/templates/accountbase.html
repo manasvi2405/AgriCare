@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriCare</title>
+    <link rel="icon" href="{%static 'images/logo.png'%}">
+    <link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{%static 'css/bootstrap-icons.min.css'%}">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+</head>
+<body class="bg-theme-light">
+    <main class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 bg-theme accountbg d-none d-md-block">
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="p-5">
+                    <div class="text-center">
+                     <img src="{%static 'images/logo.png'%}" alt="" width="30" height="30">    
+                    </div>
+                    <h3 class="text-center">
+                    <a href="{%url 'home'%}" class="text-theme-dark logo font-intro fw-bold">Agri<span class="text-theme font-intro fw-bold">Care</span></a></h3>
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </main>
+<script src="{%static 'js/bootstrap.bundle.min.js'%}"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block "content"%}
+<style>
+     body {
+  background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)),
+              url('/static/images/bgfertilizer.jpg');
+  background-size: cover;
+}
+</style>
+<section class="bannerimg">
+    <div class="py-5 text-center text-white">
+        <p class="mt-4"><span class="border p-3 rounded "><a href="{%url 'home'%}" class="text-white">Home </a><img src="{%static 'images/leaf.png'%}" alt="" height="18" width="18"> Disease Detection</span></p>
+        <h1 class="mt-5 mb-3">Know & Grow</h1>
+    </div>
+</section>
+<section class="container py-5">
+    <h1 class="text-center fw-bold mb-4">Upload Your Crop Image to Identify Diseases</h1>
+    {% if prediction %}
+    <div class="d-flex justify-content-center">
+            <div class="mt-3 p-3 result-box w-50">
+                <h5 class="text-muted fw-bold">Disease:</h5>
+                <h2 class="mb-0 fw-bold" style="color: #2e7d32;">{{disease}} <small class="text-muted fw-normal"></small></h2>
+                <div class="text-end">
+                    <a href="#know-more" class="darkk pe-2">Know More</a>
+                </div>
+            </div>
+            </div>
+            {% endif %}
+            {% if error %}
+            <div class="mt-3 p-3 bg-danger bg-opacity-10 border-start border-danger border-4 rounded">
+                <h6 class="text-danger mb-0"><i class="fas fa-exclamation-triangle me-2"></i>Error:"Please Upload Clear Picture Again"</h6>
+            </div>
+            {% endif %}
+    <div class="row my-5">
+                <div class="col-md-5">
+                    <img src="{% static 'images/disease.jpg' %}" alt="" height="430" width="510" class="w-100 crop-img d-none d-md-block">
+                    </div>      
+        <div class="col-md-7">
+                <form method="post" enctype="multipart/form-data" class="pt-4 form-detect" onsubmit="return this.checkValidity();">
+    {% csrf_token %}
+
+    <div class="my-5">
+    <h2 for="" class="fw-bold bg-theme-dark text-center p-2 rounded-3"> <i class="bi bi-camera me-1"></i>Upload & Detect</h2> <br>
+    {% if image_url %}
+    <div class="text-center">
+    <img src="{{ image_url }}" width="200">
+    </div>
+    {% endif %}
+    <div class="text-center">
+        <input type="file" name="image" id="file-upload" hidden>
+
+<label for="file-upload" class="custom-upload-btn">
+  <i class="bi bi-cloud-upload"></i> Upload Image
+</label>
+<span id="file-name"></span>
+    </div>
+    <div class="text-center mt-4">
+    <img id="preview" 
+         style="max-width:180px; display:none; border-radius:10px; margin:auto; display:block;">
+</div>
+  
+    </div> 
+    <div class="text-center">
+                    <button type="submit" class="btn bg-theme-dark rounded-pill btn-dark mt-3 px-5 py-2 fw-bold w-50 mb-5">Detect Disease<span class="rounded-circle bg-theme p-2 ms-2"><i
+                                class="bi bi-arrow-right"></i></span></button>
+                </div>
+    
+    </form>
+        </div>
+    </div>
+</section>
+{%if prediction%}
+<section id="know-more" class="container py-5">
+    <div class="text-center">
+    <h2 class="disease-title text-center">{{disease}}</h2></div>
+    <div class="info-section">
+  <div class="info-card">
+    <h3><img src="{% static 'images/light-bulb.png'%}" alt="" height="28" width="28"> Explanation</h3>
+    <p>{{explanation}}</p>
+  </div>
+
+  <div class="info-card">
+    <h3>💊 Solution</h3>
+    <p>{{solution}}</p>
+  </div>
+
+  <div class="info-card">
+    <h3>⚠ Prevention</h3>
+    <p>{{prevention}}</p>
+  </div>
+
+</div>
+</section>
+{%endif%}
+<script>
+window.onload = function () {
+    const fileInput = document.getElementById("file-upload");
+    const preview = document.getElementById("preview");
+
+    fileInput.onchange = function (event) {
+        const file = event.target.files[0];
+        if (file) {
+            preview.src = URL.createObjectURL(file);
+            preview.style.display = "block";
+        }
+    };
+};
+</script>
+{%endblock%}

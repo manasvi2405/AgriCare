@@ -1,0 +1,271 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block "content"%}
+
+<div id="carouselExampleAutoplaying" class="carousel slide d-none d-md-block" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="d-block w-100">
+        <img src="{% static 'content/categories/sliderimg1.jpeg'%}" class="d-block w-100" alt="..." height="570">
+        <div class="carousel-caption text-start h-75">
+          <p class="text-theme border rounded-pill py-1 px-3 w-25">We are Selling Organic Products</p>
+          <h1 class="">Smart Agriculture for a<br> Healthier Tomorrow</h1>
+          <p class="w-50">A one-stop platform for plant disease detection, farming guidance, and agricultural shopping. AgriCare supports farmers with trusted seeds, strong plants, and high-quality fertilizers to ensure healthy and productive crops.</p>
+           <button class="btn btn-dark bg-theme-dark p-2 px-3 mt-2 rounded-pill"><a href="{% url 'about' %}" class="text-decoration-none text-white">Discover More</a> <span class="rounded-circle bg-theme p-2 ms-2"><i class="bi bi-arrow-right"></i></span></button>
+        </div>
+      </div>
+      </div>
+    <div class="carousel-item">
+      <img src="{% static 'content/categories/sliderr.jpeg'%}" class="d-block w-100" alt="..." height="570">
+      <div class="carousel-caption text-start h-75 w-100">
+
+        <div class="d-flex">
+          <div class="animate text-center">
+
+            <img src="{% static '/images/sprout .png' %}" alt="" height="50" width="50" class="" >
+            <h1 class="display-2">Scan Crops
+          </div>
+          <div class="animate delay1 text-center mx-5 " >
+            <img src="{% static '/images/pest.png' %}" alt="" height="50" width="50">
+            <h1 class="display-2">Detect Crops
+          </div>
+          <div class="animate delay2 text-center">
+            <img src="{% static '/images/idea.png' %}" alt="" height="50" width="50">
+            <h1 class="display-2">Act Smart
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/sliderr.jpeg'%}" class="d-block w-100" alt="..." height="570" style="filter: blur(5px);">
+  
+      <div class="carousel-caption text-start">
+          <h1 class="fw-bold display-4 font-intro">Pure Harvest,<br> <span class="text-theme font-intro fw-bold">Direct
+            to Your Home</span></h1>
+          <p class="w-50 fw-bold fs-5">Bringing farm-fresh goodness cultivated with care and delivered with trust.
+Naturally grown products that protect your health and support our farmers.
+Quality you can see, freshness you can taste, and purity you can trust.
+Sustainably grown crops nurtured with dedication and responsibility.</p>
+        </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<img src="{%static 'images/sliderr.jpeg'%}" alt="" class="d-block d-md-none w-100">
+
+<div class="bg-theme">
+<section class="container py-5">
+ <div class="row">
+  <div class="col-lg">
+    <div class="d-flex">
+    <img src="{% static 'images/plant.png'%}" alt="" height="50" width="50" class="mt-2">
+     <h3 class="ms-3 mt-3">Organic Farming with 100% natural Products</h3>
+     </div>
+  </div>
+  <div class="col-lg">
+    <div class="d-flex">
+    <img src="{% static 'images/trust.png'%}" alt="" height="50" width="50" class="mt-2">
+     <h3 class="ms-3 mt-3">User Trusted and Verified</h3>
+     </div>
+  </div>
+  <div class="col-lg">
+    <div class="d-flex">
+    <img src="{% static 'images/healthy-food.png'%}" alt="" height="50" width="50" class="mt-2">
+     <h3 class="ms-3 mt-3">Healthy Life with Quality Seeds</h3>
+     </div>
+  </div>
+ </div>
+</section>
+</div>
+
+<div class="box cropbg">
+  <div id="overlay">
+   <section class="container py-5">
+    <div class="text-center py-3 mb-4">
+  <h6 class="text-theme-dark text-uppercase">Tools</h6>
+  <h1>Smart Farming Assistence</h1>
+  <p class="w-50 m-auto">Use Advanced AI tools to detect plant disease,get crop recommendations and Fertilizer recommendations</p>
+</div>
+    <div class="row gap-3 my-5 justify-content-center">
+      <div class="col-12 col-md-3 bg-theme-dark rounded p-5 text-center">
+        <img src="{% static '/images/sticker2.png' %}" alt="" height="120" width="120" class="plant3 d-none d-md-block">
+        <h2 class="text-center fw-bold mt-5">Detect <br> Disease</h2>
+        <p class="text-center fw-bold">Detect plant diseases instantly by scanning leaf images.
+Get quick AI-based diagnosis and treatment suggestions.</p>
+       <a href="{% url 'detectdisease'%}"><button class="btn btn-light rounded-pill px-4 w-100">Scan</button></a>
+      </div>
+      <div class="col-12 col-md-3 bg-theme-dark rounded p-5 text-center">
+        <img src="{% static '/images/wheat.png' %}" alt="" height="120" width="120" class="plant2 d-none d-md-block">
+        <h2 class="text-center fw-bold mt-5">Crop Recommendation</h2>
+        <p class="text-center fw-bold">Find the best crops to grow based on soil and climate conditions.
+Improve yield with smart crop suggestions.</p>
+      <a href="{% url 'croprecommendation'%}"><button class="btn btn-light rounded-pill px-4 w-100">Scan</button></a>
+      </div>
+      <div class="col-12 col-md-3 bg-theme-dark rounded p-5 text-center">
+         <img src="{% static '/images/crops.png' %}" alt="" height="120" width="120" class="plant d-none d-md-block">
+        <h2 class="text-center fw-bold mt-5">Yield <br> Prediction</h2>
+        <p class="text-center fw-bold">Estimate how much crop field will produce using AI-powered analysis of weather, soil and inputs.</p>
+<a href="{%url 'predict_yield'%}"><button class="btn btn-light rounded-pill px-4 w-100">Scan</button></a>
+      </div>
+    </div>
+       <!-- <img src="{%static 'images/sticker.png'%}" alt="" class="plant"> -->
+      </section>
+      </div>
+</div>
+
+<div class="bg-theme-light">
+<section class="container py-5" id="category">
+<div class="text-center py-3 mb-4">
+  <h6 class="text-theme-dark text-uppercase">Categories</h6>
+  <h1>Browse By Category</h1>
+  <p class="w-50 m-auto">We plan to democratize access to modern agricultural inputs such as equipment, fertilizer, pesticides, and seeds</p>
+</div>
+<div class="row gap-3 justify-content-center">
+{% for category in pcategories %}
+  <div class="col-5 col-md text-center mx-2">
+    <a href="{%url 'shopbycategory' category.id%}">
+    <div class="card category-card" style="border-radius:50px;">
+  <img src="{{category.image.url}}" class="card-img-top category-img" alt="..." style="min-height:230px; max-height: 250px; border-radius: 50px 50px 0 0">
+  <div class="card-body">
+    <p class="card-text text-theme-dark fw-bold fs-5">{{category.name}} 
+      <span class="bg-theme-dark p-2 rounded-circle ms-5"><i class="bi bi-arrow-right"></i></span>
+    </p>
+  </div>
+</div>
+</a>
+  </div>
+{% endfor %}
+</div>
+
+</section>
+</div>
+
+<div style="background-image: url('static/images/sunflower.jpg');background-size:cover;
+    background-position:top;">
+    <section class="container py-5">
+      <div class="row gap-4">
+        <div class="col-lg yellow p-5 rounded text-center">
+          <img src="{% static 'images/sesame.png'%}" alt="" height="50" width="50" class="mt-2">
+          <h2 class="text-center fw-bold">500+</h2>
+          <h4 class="text-center fw-bold">Quality Seeds</h4>
+        </div>
+        <div class="col-lg yellow p-5 rounded text-center">
+          <img src="{% static 'images/farmerr.png'%}" alt="" height="50" width="50" class="mt-2">
+          <h2 class="text-center fw-bold">300+</h2>
+          <h4 class="text-center fw-bold">Farmers Supported</h4>
+        </div>
+        <div class="col-lg yellow p-5 rounded text-center">
+          <img src="{% static 'images/harvest.png'%}" alt="" height="50" width="50" class="mt-2">
+          <h2 class="text-center fw-bold">50+</h2>
+          <h4 class="text-center fw-bold">Crops Recommended</h4>
+        </div>
+        <div class="col-lg yellow p-5 rounded text-center">
+          <img src="{% static 'images/disease.png'%}" alt="" height="50" width="50" class="mt-2">
+          <h2 class="text-center fw-bold">95%</h2>
+          <h4 class="text-center fw-bold">Disease Detection Accuracy</h4>
+        </div>
+      </div>
+    </section>
+</div>
+
+<div class="bg-theme-dark">
+<section class="container py-5" id="shop">
+<div class="text-center py-3 mb-4">
+  <h6 class="text-theme-dark text-uppercase">Shop</h6>
+  <h1>Our Products</h1>
+  <p class="w-50 m-auto">A comprehensive one-stop online shopping platform for agriculture products and services built especially for farmers in rural areas</p>
+</div>
+<div class="row g-3">
+{% for product in products %}
+  <div class="col-6 col-md-4 col-lg-3">
+    <a href="{%url 'product' product.id%}" class="text-dark">
+    <div class="card mb-3 rounded product-card">
+  <img src="/media/{{product.product_image}}" class="card-img-top w-75 m-auto p-3 d-none d-md-block" alt="..." height="250" >
+  <img src="/media/{{product.product_image}}" class="card-img-top w-75 m-auto p-3 d-md-none" alt="..." height="350" >
+  
+  <div class="card-body">
+    <p class="card-title fw-bold">{{product.name}}</p>
+    <p class="card-text">{{product.brand.name}}</p>
+    <p class="card-text fs-5 mb-0"> <i class="bi bi-currency-rupee"></i> {{product.selling_price}}
+    <del class="text-secondary"><i class="bi bi-currency-rupee"></i> {{product.mrp}}</del>
+    </p>
+    <p class="text-theme"> Save ₹{{product.discount}}</p>
+  </div>
+</div></a>
+  </div>
+{% empty %}
+<div class="alert alert-light">
+  <p>No Article Found!</p>
+</div>
+{% endfor %}
+</div>
+</section>
+</div>
+
+<section class="bg-theme d-none d-md-block">
+<div class="d-flex">
+  <h4 class="font-intro">AgriCare</h4>
+  <h4 class="font-intro mx-4">AgriCare</h4>
+  <h4 class="font-intro">AgriCare</h4>
+  <h4 class="font-intro mx-4">AgriCare</h4>
+  <h4 class="font-intro">AgriCare</h4>
+   <h4 class="font-intro mx-4">AgriCare</h4>
+  <h4 class="font-intro">AgriCare</h4>
+   <h4 class="font-intro mx-4">AgriCare</h4>
+  <h4 class="font-intro">AgriCare</h4>
+  <h4 class="font-intro mx-4">AgriCare</h4>
+  <h4 class="font-intro">AgriCare</h4>
+  <h4 class="font-intro mx-4">AgriCare</h4>
+  <h4 class="font-intro">A</h4>
+  
+
+</div>
+
+</section>
+
+<div class="bg-theme-light">
+<section class="container py-5" id="blog">
+  <div class="text-center py-3 mb-4">
+  <h6 class="text-theme-dark text-uppercase">Our Blog</h6>
+  <h1>Articles & Tips</h1>
+  <p class="w-50 m-auto">We aim to improve their quality of life by creating a smarter future of farming.</p>
+</div>
+  <div class="row">
+{% for article in articles %}
+  <div class="col-6 col-md-4">
+    <a href="{%url 'article' article.id%}" class="text-dark">
+    <div class="card mb-3 article-card">
+  <img src="/media/{{article.featured_image}}" class="card-img-top article-img" alt="..." height="300">
+  <div class="card-body">
+    <p class="card-text text-secondary">{{article.created_at|date}} | {{article.category.name}} </p>
+    <h5 class="card-title fw-bold">{{article.title}}</h5>
+  </div>
+</div></a>
+  </div>
+{% empty %}
+<div class="alert alert-light">
+  <p>No Article Found!</p>
+</div>
+{% endfor %}
+</div>
+</section>
+</div>
+
+<div class="bg-theme">
+  <section class="container py-3">
+    <div class="justify-content-center d-flex mt-1">
+      <img src="{% static 'images/like.png'%}" alt="" height="40" width="40">
+      <h1 class="font-intro text-dark mx-2">Plants Grow People</h1>
+      <img src="{% static 'images/like.png'%}" alt="" height="40" width="40">
+    </div>
+  </section>
+</div>
+{% endblock %}

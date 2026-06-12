@@ -1,0 +1,39 @@
+{% extends 'accountbase.html' %}
+{% block content %}
+<h2 class="text-center mt-5"> Create Account!</h2>
+<hr>
+<p class="text-center my-3"> Enter Account Details to Register</p>
+<form method="post">
+    {% csrf_token %}
+    
+     <div class="mb-3">
+<input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus=""
+placeholder="User Name"
+required="" id="id_username" class="form-control" title=" Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.">
+</div>
+<div class="mb-3">
+<input type="email" name="email" maxlength="320" required="" id="id_email" class="form-control" placeholder="Email Address">
+</div>
+<div class="mb-3">
+<input type="password" name="password1" autocomplete="new-password" required id="id_password1" class="form-control pwd"
+title="Your password must contain at least 8 characters and can’t be entirely numeric." placeholder="New Password">
+</div>
+<div class="mb-3">
+<input type="password" name="password2" autocomplete="new-password" required id="id_password2"
+class="form-control pwd" title="Enter the same password as before, for verification." placeholder="Confirm Password">
+</div>
+
+
+    <div class="text-center">
+    <button class="btn btn-dark bg-theme-dark p-2 px-5 rounded-pill">Register <span class="rounded-circle bg-theme p-2 ms-2"><i class="bi bi-arrow-right"></i></span></button>
+    </div>
+</form>
+{% if form.errors %}
+<div class="alert alert-danger mt-4">
+{% for key, value in form.errors.items %}
+{{ value.as_text }}
+{% endfor %}
+</div>
+{% endif %}
+{% endblock %}
+

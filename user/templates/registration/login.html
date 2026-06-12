@@ -1,0 +1,30 @@
+{% extends 'accountbase.html' %}
+{% block content %}
+{% load static %}
+
+<h2 class="text-center mt-5"> Welcome User!</h2><hr>
+<p class="text-center my-3"> Enter Account Details to Login</p>
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username" fdprocessedid="a38jo" class="form-control mb-3" placeholder="User Name">
+    </div>
+    <div>
+        <input type="password" name="password" autocomplete="current-password" required="" id="id_password" fdprocessedid="no3hpd" class="form-control mb-3" placeholder="Password">
+    </div>
+    <div class="text-center">
+    <button class="btn btn-dark bg-theme-dark p-2 px-5 rounded-pill">Login <span class="rounded-circle bg-theme p-2 ms-2"><i class="bi bi-arrow-right"></i></span></button>
+    </div>
+    <p class="text-end mt-3 text-center"><a href="{% url 'password_reset' %}" class="text-theme-dark fw-bold">Forgot Password</a></p>
+     
+</form>
+<p class="text-center">Dont have as Account ? <a href="{% url 'register' %}" class="text-theme-dark fw-bold">SignUp Here</a></p>
+{% if form.errors %}
+<div class="alert alert-danger mt-4">
+{% for key, value in form.errors.items %}
+{{ value.as_text }}
+{% endfor %}
+</div>
+{% endif %}
+
+{% endblock %}

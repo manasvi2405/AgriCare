@@ -1,0 +1,22 @@
+{% extends 'userbase.html' %}
+{% block content %}
+{% load static %}
+{% include "message.html" %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-10">
+             <p class="display-6">Delete Address</p>
+            <p class="fs-5">{{object.street_address}},{{object.city}},{{object.state}},{{object.postal_code}}</p>
+            <hr>
+            <form method="POST">
+                {% csrf_token %}
+                <p class="fs-6">Do you really want to delete this address?</p>
+                <button class="btn btn-danger">Delete Address</button>
+                <a href="/user/listaddress" class="btn btn-dark bg-theme-dark">Cancel</a>
+
+            </form>
+            <p class="mt-4 small text-muted">The process cannot be undone once the address is deleted</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

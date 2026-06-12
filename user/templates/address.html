@@ -1,0 +1,40 @@
+{% extends 'userbase.html' %}
+{% block content %}
+{% load static %}
+{% include "message.html" %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <p class="text-end"><a href="{% url 'addaddress' %}" title="Add Address" class="text-light fw-bold btn btn-dark bg-theme-dark rounded-pill p-2">
+                <i class="bi bi-geo-alt"></i> Add New Address</a></p>
+<h5 class="text-center fw-bold">Manage Addresses</h5><hr>
+<table class="table border border-dark my-5">
+    <thead class="text-center"><tr><th style="padding-left: 150px;">Your Address</th></tr></thead>
+            <tbody>
+                {% for obj in object_list %}
+                <tr>
+                    <td>
+                        <strong class="d-flex">{{obj.address_type}} {% if obj.is_default %}
+                <p class="ms-1 text-secondary">(Default)</p>
+                {% else %}
+                {% endif %}</strong>
+                        <p>{{obj.street_address}},{{obj.city}},{{obj.state}},{{obj.postal_code}} {{obj.country}}</p>
+                        <p>Name: {{obj.full_name}}</p>
+                        <p>Phone No.: {{obj.phone_number}}</p>
+                    </td>
+                    <td class="border-top border-dark">
+                        <a href="{% url 'updateaddress' obj.id %}" title='edit'>
+                            <i class="bi bi-pencil-square text-success"></i>
+                        </a>
+                        <a href="{% url 'deleteaddress' obj.id %}" title="delete">
+                            <i class="bi bi-trash3 text-danger"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+           </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

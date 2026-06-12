@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - AgriCare</title>
+    <link rel="icon" href="{%static 'images/logo.png'%}">
+    <link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{%static 'css/bootstrap-icons.min.css'%}">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- TOPBAR ONLY -->
+<div class="topbar bg-theme-dark">
+    <div class="d-flex align-items-center">
+    <div class="bg-theme-light rounded-circle p-1" style="margin-left: 600px;">
+        <img src="{% static 'images/leavesyellow.png' %}" alt="" height="25" width="25">
+        </div>
+            <h3 class="text-center ms-2 mt-1"><span class="text-light font-intro">Agri</span><span class="font-intro text-theme">Care</span></h3>
+    </div>
+</div>
+
+<!-- FULL WIDTH CONTENT -->
+<div class="container mt-4">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<script src="{%static 'js/bootstrap.bundle.min.js'%}"></script>
+</body>
+</html>

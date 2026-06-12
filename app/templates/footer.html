@@ -1,0 +1,94 @@
+{% load static %}
+<footer class="bg-theme-dark text-white">
+    <section class="container py-5">
+        <span class="rounded-circle p-2 m-5 bg-theme-light">
+            <img src="{% static 'images/logo.png'%}" alt="" height="30" width="30">
+        </span>
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <h1 class="font-intro my-3">Agri<span class="text-theme font-intro">Care</span></h1>
+                <p class="pe-5 text-justify">AgriCare supports farmers with trusted seeds, strong plants, and high-quality fertilizers to ensure healthy and productive crops. Our smart disease detection feature helps identify crop problems at an early stage, allowing timely treatment and better decision-making. A one-stop platform for plant disease detection, farming guidance, and agricultural shopping.</p>
+            </div>
+            <div class="col-6 col-md-2">
+                <h5 class="mb-3 my-3">Ouick Links</h5>
+                <ul class="mt-4">
+                    <li class="my-3">
+                        <img src="{%static 'images/info.png'%}" alt="" height="25" width="25">
+                        <a href="{%url 'about'%}" class="ms-2">About</a>
+                    </li>
+                    <li>
+                         <img src="{%static 'images/contact-us.png'%}" alt="" height="25" width="25">
+                        <a href="{%url 'contact'%}" class="ms-2">Contact</a>
+                    </li>
+                    <li class="my-3">
+                        <img src="{%static 'images/insurance.png'%}" alt="" height="25" width="25">
+                        <a href="{%url 'privacy'%}" class="ms-2">Privacy Policy</a>  
+                    </li>
+                        <img src="{%static 'images/customer-service.png'%}" alt="" height="25" width="25">
+                        <a href="{%url 'terms'%}" class="ms-2">Terms of Service</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6 col-md-2">
+                <h5 class="mb-3 my-3">My Account</h5>
+                <ul class="mt-4">
+                <li>
+                    <img src="{%static 'images/add.png'%}" alt="" height="20" width="20">
+                    <a href="{% url 'register'%}" class="ms-2">Register</a>
+                </li>
+                <li class="my-3">
+                        <img src="{%static 'images/loginn.png'%}" alt="" height="25" width="25">
+                        <a href="{%url 'login'%}" class="ms-2">Login</a>
+                    </li>
+                <li>
+                    <img src="{%static 'images/location.png'%}" alt=""  height="25" width="25">
+                    <a href="{%url 'listaddress'%}" class="ms-2">Manage Address</a>
+                </li>
+                <li class="my-3">
+                     <img src="{%static 'images/booking.png'%}" alt=""  height="25" width="25">
+                    <a href="{%url 'order_history'%}" class="ms-2">My Orders</a>
+                </li>
+                </ul>
+            </div>
+            <div class="col-12 col-md-4 text-white">
+                <h5 class="mb-3 my-3">Recent Posts</h5>
+
+{% for post in recent_articles %}
+<div class="d-flex mb-3 align-items-center mt-4">
+    <img src="{{ post.featured_image.url }}" 
+         height="70" 
+         width="70"
+         class="me-3 rounded"
+         style="object-fit: cover;">
+  <a href="{% url 'article' post.id%}">
+    <div>
+        <small class="text-white">
+            <span class="text-theme">{{post.created_at|date}}</span><br>
+            {{ post.title }}
+        </small>
+    </div>
+</a>
+</div>
+{% endfor %}
+
+            </div>
+        </div>
+    </section>
+</footer>
+<script src="{%static 'js/bootstrap.bundle.min.js'%}"></script>
+<script>
+const input = document.getElementById("file-upload");
+const fileName = document.getElementById("file-name");
+
+input.onchange = () => {
+  if (input.files.length > 0) {
+    fileName.textContent = "✔ " + input.files[0].name;
+    fileName.style.color = "black";
+    fileName.style.marginLeft = "10px";
+  } else {
+    fileName.textContent = "";
+  }
+};
+</script>
+</body>
+</html>

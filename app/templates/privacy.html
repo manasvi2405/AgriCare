@@ -1,0 +1,122 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block "content"%}
+<style>
+    h2{
+        color: green;
+    }
+</style>
+<section class="bannerimg">
+    <div class="py-5 text-center text-white">
+        <p class="mt-3"><span class="border rounded p-3"><a href="{% url 'home'%}" class="text-white">Home</a>
+            <img src="{%static 'images/leaf.png'%}" alt="" height="18" width="18">
+  {% if user.is_authenticated %}
+  <a href="{% url 'dashboard'%}" class="text-white">Dashboard </a><img src="{%static 'images/leaf.png'%}" alt="" height="18" width="18">
+  {% else %}
+  <a href="{% url 'login'%}" class="text-white">Dashboard </a><img src="{%static 'images/leaf.png'%}" alt="" height="18" width="18">
+  {% endif %}
+</li>
+            Privacy Policy</span></p>
+    </div>
+</section>
+
+<section class="container py-5 privacy-container">
+
+<h2>Privacy Policy</h2>
+<p>
+At AgriCare, we respect your privacy and are committed to protecting your personal information.
+This Privacy Policy explains how we collect, use, and protect the information you provide when
+using our website and services.
+</p>
+
+<hr>
+
+<h2>1. Information We Collect</h2>
+<p>When you use AgriCare, we may collect the following types of information:</p>
+
+<ul>
+<li><b>Personal Information:</b> Name, phone number, email address, and delivery address when placing orders.</li>
+<li><b>Account Information:</b> Login details and account preferences.</li>
+<li><b>Order Information:</b> Products purchased such as seeds, fertilizers, and other agricultural products.</li>
+<li><b>Usage Data:</b> Information about how you interact with our website and services.</li>
+<li><b>Images or Data:</b> Photos uploaded for plant disease detection or crop analysis.</li>
+</ul>
+
+<h2>2. How We Use Your Information</h2>
+<p>The information collected may be used for the following purposes:</p>
+
+<ul>
+<li>To process and deliver orders.</li>
+<li>To provide crop recommendations and disease detection services.</li>
+<li>To improve our website and farming tools.</li>
+<li>To communicate with users regarding orders, updates, and support.</li>
+<li>To prevent fraud and ensure platform security.</li>
+</ul>
+
+<h2>3. Crop Recommendation and Disease Detection Data</h2>
+<p>
+If you upload plant images or farming data for disease detection or crop recommendations,
+AgriCare may process this information to provide accurate results and improve the system.
+This data will only be used for agricultural analysis and service improvement.
+</p>
+
+<h2>4. Sharing of Information</h2>
+<p>
+AgriCare does not sell or rent personal information to third parties.
+However, we may share information with trusted partners such as:
+</p>
+
+<ul>
+<li>Delivery partners for shipping products.</li>
+<li>Payment gateway providers for secure transactions.</li>
+<li>Technical partners that help operate our platform.</li>
+</ul>
+
+<h2>5. Data Security</h2>
+<p>
+AgriCare uses appropriate technical and security measures to protect user information
+from unauthorized access, loss, or misuse.
+However, no online platform can guarantee complete security.
+</p>
+
+<h2>6. Cookies and Website Tracking</h2>
+<p>
+Our website may use cookies to improve user experience, remember preferences,
+and analyze website traffic. Users can disable cookies through their browser settings.
+</p>
+
+<h2>7. User Rights</h2>
+<p>Users have the right to:</p>
+
+<ul>
+<li>Access their personal information.</li>
+<li>Request correction of incorrect information.</li>
+<li>Request deletion of their account data.</li>
+</ul>
+
+<h2>8. Third-Party Links</h2>
+<p>
+The website may contain links to third-party websites for agricultural resources or services.
+AgriCare is not responsible for the privacy practices of those external websites.
+</p>
+
+<h2>9. Policy Updates</h2>
+<p>
+AgriCare may update this Privacy Policy from time to time to reflect improvements
+or legal requirements. Updated versions will be posted on this page.
+</p>
+
+<h2>10. Contact Us</h2>
+<p>
+If you have any questions or concerns regarding this Privacy Policy, please contact us:
+</p>
+
+<ul>
+<li>Email: support@agricare.com</li>
+<li>Phone: +91-9876034277</li>
+<li>Address: India</li>
+</ul>
+
+</section>
+
+{% endblock %}

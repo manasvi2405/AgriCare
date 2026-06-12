@@ -1,0 +1,69 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block "content"%}
+<section class="bannerimg">
+    <div class="py-5 text-center text-white">
+        <p class="mt-3"><span class="border p-3 rounded "><a href="{%url 'home'%}" class="text-white">Home </a><img src="{%static 'images/leaf.png'%}" alt="" height="18" width="18"> About </span></p>
+        <h1 class="mt-5 mb-3 fw-bold fs-1 text-theme">Empowering <span class="font-intro text-light" style="margin-right: 200px;">Farmers,</span> <br><span class="font-intro text-light" style="margin-left: 250px;">Nourishing </span>Communities.</h1>
+    </div>
+</section>
+<section class="container py-5">
+         <h1 class="text-center fw-bold text-theme-dark">Wh<span class="borderdark pb-3">y Agricare?</span></h1>
+         <div class="row my-5">
+            <div class="col text-center">
+                <p class="fs-5 mt-5 pt-3">Farming is the backbone of our society, yet many farmers face challenges in identifying crop diseases and finding the right solutions. AgriCare was created to bridge this gap using smart technology.
+                With AI-powered disease detection, practical farming guidance, and easy access to essential products, we aim to empower farmers to make better decisions, reduce losses, and achieve higher yields.</p>
+            </div>
+            <div class="col justify-content-center">
+                <div class="d-flex">
+                    <img src="{% static 'images/farm.jpg'%}" alt="" class="mt-4" height="270" width="200" style="border-radius: 60px;">
+                      <img src="{% static 'images/sheep.jpg'%}" alt="" class="mx-3" height="320" width="200" style="border-radius: 60px;">
+                        <img src="{% static 'images/fruits.jpg'%}" alt="" class="mt-4" height="270" width="200" style="border-radius: 60px;">
+                </div>
+            </div>
+         </div>
+        </section>
+
+        <div class="bg-theme-light">
+            <section class="container py-5">
+                <h5 class="text-center fw-bold">ABOUT US</h5>
+                <h1 class="text-center my-3 fw-bold">Our Mission, <br> Values and Vision</h1>
+                <div class="bg-theme-dark rounded-4 text-center position-relative"style="margin-bottom: -100px;width:900px;height:200px;margin-left:200px;">
+                    <div class="container py-5">
+                        <div class="row">
+                            <div class="col">
+                                <img src="{%static 'images/natural.png'%}" alt="" height="40" width="40">
+                                <h5 class="mt-2">Freshness</h5>
+                            </div>
+                            <div class="col mt-4">
+                                <img src="{%static 'images/trustworthiness.png'%}" alt="" height="40" width="40">
+                                <h5 class="mt-2">Trust & Transparency</h5>
+                            </div>
+                            <div class="col">
+                                <img src="{%static 'images/globe.png'%}" alt="" height="40" width="40">
+                                <h5 class="mt-2">Sustainability</h5>
+                            </div>
+                            <div class="col mt-4">
+                                <img src="{%static 'images/bulb.png'%}" alt="" height="40" width="40">
+                                <h5 class="mt-2">Innovation</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container py-5 my-5 bg-light rounded-5">
+                <div class="row p-5">
+                    <div class="col-md-6 border-end border-dark pe-5">
+                        <h4 class="fw-bold"><img src="{% static 'images/vision.png' %}" alt="" height="25;" width="25" class=" me-2">Vision</h4>
+                        <p class="mt-3 text-justify">To empower farmers by providing reliable agricultural products and smart disease detection solutions that improve crop health and increase farm productivity.At Agricare, our vision is to become a trusted leader in sustainable agriculture, empowering farmers, nourishing communities, and protecting the environment for future generations. We aspire to build a world where fresh, healthy, and affordable produce is accessible to everyone</p>
+
+                    </div>
+                    <div class="col-md-6 ps-5"> 
+                        <h4 class="fw-bold"><img src="{% static 'images/aim.png' %}" alt="" height="25;" width="25" class=" me-2">Mission</h4>
+                        <p class="mt-3 text-justify">To become a trusted digital agriculture partner for farmers, promoting sustainable farming practices and ensuring food security for communities.We believe in building strong relationships with farmers, suppliers, and consumers through honesty and transparency. By combining innovation with traditional agricultural wisdom, we aim to reduce waste, enhance efficiency, and contribute positively to both society and the planet.</p>
+                    </div>
+                </div>
+            </div>
+            </section>
+        </div>
+
+{% endblock %}
